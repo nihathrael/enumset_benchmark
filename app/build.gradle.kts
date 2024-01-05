@@ -23,6 +23,6 @@ java {
 
 jmh {
     warmupIterations = 2
-    iterations = 2
+    iterations = 5
     fork = 1
 }

@@ -30,6 +30,7 @@ public class EnumSetBenchmark {
     public static class FlagState {
         public Flag a = Flag.A;
         public Flag b = Flag.B;
+        public Flag c = Flag.C;
         public Flag g = Flag.E;
     }
 
@@ -99,8 +100,8 @@ public class EnumSetBenchmark {
 
     @Benchmark
     public void benchmarkEnumSetCreate(FlagState state, Blackhole bh) {
-        Set<Flag> hashSetA = EnumSet.of(state.a, state.b, state.g);
-        bh.consume(hashSetA);
+        Set<Flag> enumSet = EnumSet.of(state.a, state.b, state.g);
+        bh.consume(enumSet);
     }
 
     /**
@@ -109,8 +110,24 @@ public class EnumSetBenchmark {
      */
     @Benchmark
     public void benchmarkEnumSetCreateInline(Blackhole bh) {
-        Set<Flag> hashSetA = EnumSet.of(Flag.A, Flag.B, Flag.E);
-        bh.consume(hashSetA);
+        Set<Flag> enumSet = EnumSet.of(Flag.A, Flag.B, Flag.E);
+        bh.consume(enumSet);
+    }
+
+    @Benchmark
+    public void benchmarkEnumSetAdd(FlagState state, Blackhole bh) {
+        Set<Flag> enumSet = EnumSet.of(state.a, state.b, state.g);
+        bh.consume(enumSet);
+        enumSet.add(state.c);
+        bh.consume(enumSet);
+    }
+
+    @Benchmark
+    public void benchmarkEnumSetRemove(FlagState state, Blackhole bh) {
+        Set<Flag> enumSet = EnumSet.of(state.a, state.b, state.g);
+        bh.consume(enumSet);
+        enumSet.remove(state.b);
+        bh.consume(enumSet);
     }
 
     static final int A = 1;
@@ -133,6 +150,8 @@ public class EnumSetBenchmark {
         public int valueOne = A;
         public int valueTwo = B;
         public int valueThree = E;
+
+        public int valueFour = C;
     }
 
     @Benchmark
@@ -168,5 +187,21 @@ public class EnumSetBenchmark {
         int b = C | D | F;
         //noinspection ConstantValue - The point of this demonstration is to show that the JVM will be able to calculate the constant
         bh.consume(a == b);
+    }
+
+    @Benchmark
+    public void benchmarkBitmaskAdd(BitMaskState state, Blackhole bh) {
+        int a = state.valueOne | state.valueTwo | state.valueThree;
+        bh.consume(a);
+        a |= state.valueFour;
+        bh.consume(a);
+    }
+
+    @Benchmark
+    public void benchmarkBitmaskRemove(BitMaskState state, Blackhole bh) {
+        int a = state.valueOne | state.valueTwo | state.valueThree;
+        bh.consume(a);
+        a &= ~state.valueTwo;
+        bh.consume(a);
     }
 }
