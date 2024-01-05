@@ -20,6 +20,7 @@ automatically download the necessary dependencies.
 These are the results on my machine (Windows 11, AMD Ryzen 7 2700X with 8 cores, 16GB RAM, SSD):
 
 ```
+Benchmark                                Mode  Cnt           Score          Error  Units
 EnumSetBenchmark.bitmaskAdd             thrpt    5  1122953845.662 ± 14487321.908  ops/s
 EnumSetBenchmark.bitmaskCreation        thrpt    5  1292682130.158 ± 33722811.879  ops/s
 EnumSetBenchmark.bitmaskCreationInline  thrpt    5  2640638042.506 ± 37382005.672  ops/s
