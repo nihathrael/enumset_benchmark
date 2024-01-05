@@ -11,7 +11,7 @@ import java.util.*;
  * <br>
  * <p>We compare:
  *     <ul>
- *         <li>Using an integer Bitmask</li>
+ *         <li>Using an integer bitfield</li>
  *         <li>Using {@link EnumSet}</li>
  *         <li>Using {@link Set#of(Object, Object, Object)}</li>
  *         <li>Using {@link HashSet}</li>
@@ -142,7 +142,7 @@ public class EnumSetBenchmark {
      * State object to avoid constant inlining by the JVM.
      */
     @State(Scope.Thread)
-    public static class BitMaskState {
+    public static class BitfieldState {
         public int a = A | B | E;
         public int b = C | D | F;
 
@@ -155,7 +155,7 @@ public class EnumSetBenchmark {
     }
 
     @Benchmark
-    public void bitmaskCreation(BitMaskState state, Blackhole bh) {
+    public void bitfieldCreation(BitfieldState state, Blackhole bh) {
         int a = state.valueOne | state.valueTwo | state.valueThree;
         bh.consume(a);
     }
@@ -165,14 +165,14 @@ public class EnumSetBenchmark {
      * This should be much faster than the non-inlined version.
      */
     @Benchmark
-    public void bitmaskCreationInline(Blackhole bh) {
+    public void bitfieldCreationInline(Blackhole bh) {
         int a = A | B | E;
         bh.consume(a);
     }
 
 
     @Benchmark
-    public void bitmaskEquals(BitMaskState state, Blackhole bh) {
+    public void bitfieldEquals(BitfieldState state, Blackhole bh) {
         bh.consume(state.a == state.b);
     }
 
@@ -182,7 +182,7 @@ public class EnumSetBenchmark {
      * This should be much faster than the non-inlined version.
      */
     @Benchmark
-    public void bitmaskEqualsInline(Blackhole bh) {
+    public void bitfieldEqualsInline(Blackhole bh) {
         int a = A | B | E;
         int b = C | D | F;
         //noinspection ConstantValue - The point of this demonstration is to show that the JVM will be able to calculate the constant
@@ -190,7 +190,7 @@ public class EnumSetBenchmark {
     }
 
     @Benchmark
-    public void bitmaskAdd(BitMaskState state, Blackhole bh) {
+    public void bitfieldAdd(BitfieldState state, Blackhole bh) {
         int a = state.valueOne | state.valueTwo | state.valueThree;
         bh.consume(a);
         a |= state.valueFour;
@@ -198,7 +198,7 @@ public class EnumSetBenchmark {
     }
 
     @Benchmark
-    public void bitmaskRemove(BitMaskState state, Blackhole bh) {
+    public void bitfieldRemove(BitfieldState state, Blackhole bh) {
         int a = state.valueOne | state.valueTwo | state.valueThree;
         bh.consume(a);
         a &= ~state.valueTwo;

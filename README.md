@@ -3,7 +3,7 @@ Benchmark to compare different ways of representing sets of {@link Enum}s in Jav
 [Chris Wellons in "The cost of Java's EnumSet"](https://nullprogram.com/blog/2021/04/23/).
 
 We compare:
-* Using an integer Bitmask
+* Using an integer bitfield
 * Using `EnumSet`
 * Using `Set#of(Object, Object, Object)`
 * Using `HashSet`
@@ -21,12 +21,12 @@ These are the results on my machine (Windows 11, AMD Ryzen 7 2700X with 8 cores,
 
 ```
 Benchmark                                Mode  Cnt           Score          Error  Units
-EnumSetBenchmark.bitmaskAdd             thrpt    5  1122953845.662 ± 14487321.908  ops/s
-EnumSetBenchmark.bitmaskCreation        thrpt    5  1292682130.158 ± 33722811.879  ops/s
-EnumSetBenchmark.bitmaskCreationInline  thrpt    5  2640638042.506 ± 37382005.672  ops/s
-EnumSetBenchmark.bitmaskEquals          thrpt    5  1582210639.358 ± 33561406.255  ops/s
-EnumSetBenchmark.bitmaskEqualsInline    thrpt    5  2634237498.969 ± 37811030.834  ops/s
-EnumSetBenchmark.bitmaskRemove          thrpt    5  1279302750.101 ± 22906668.356  ops/s
+EnumSetBenchmark.bitfieldAdd             thrpt    5  1122953845.662 ± 14487321.908  ops/s
+EnumSetBenchmark.bitfieldCreation        thrpt    5  1292682130.158 ± 33722811.879  ops/s
+EnumSetBenchmark.bitfieldCreationInline  thrpt    5  2640638042.506 ± 37382005.672  ops/s
+EnumSetBenchmark.bitfieldEquals          thrpt    5  1582210639.358 ± 33561406.255  ops/s
+EnumSetBenchmark.bitfieldEqualsInline    thrpt    5  2634237498.969 ± 37811030.834  ops/s
+EnumSetBenchmark.bitfieldRemove          thrpt    5  1279302750.101 ± 22906668.356  ops/s
 EnumSetBenchmark.enumSetAdd             thrpt    5   201261050.245 ±  3047021.038  ops/s
 EnumSetBenchmark.enumSetCreate          thrpt    5   215090629.176 ±   827035.414  ops/s
 EnumSetBenchmark.enumSetCreateInline    thrpt    5   239108143.810 ±  2845003.880  ops/s
