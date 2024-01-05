@@ -17,7 +17,7 @@ automatically download the necessary dependencies.
 
 # Results
 
-These are the results on my machine (Windows 11, AMD Ryzen 7 2700X with 8 cores, 16GB RAM, SSD):
+These are the results on my machine (Oracle OpenJDK 21, Windows 11, AMD Ryzen 7 2700X with 8 cores, 16GB RAM, SSD):
 
 ```
 Benchmark                                Mode  Cnt           Score          Error  Units
