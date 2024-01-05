@@ -1,6 +1,6 @@
 # Intro 
-Benchmark to compare different ways of representing sets of {@link Enum}s in Java. This work builds on the ideas
-<a href="https://nullprogram.com/blog/2021/04/23/">Chris Wellons in "The cost of Java's EnumSet"</a>
+Benchmark to compare different ways of representing sets of {@link Enum}s in Java. This work builds on the ideas presented by
+[Chris Wellons in "The cost of Java's EnumSet"](https://nullprogram.com/blog/2021/04/23/).
 
 We compare:
 * Using an integer Bitmask
@@ -8,9 +8,12 @@ We compare:
 * Using `Set#of(Object, Object, Object)`
 * Using `HashSet`
 
+You can find the benchmark implementation in [EnumSetBenchmark.java](https://github.com/nihathrael/enumset_benchmark/blob/main/app/src/jmh/java/de/kinnen/enumset_benchmark/EnumSetBenchmark.java).
+
 # How to run the Benchmark
 
-You can run the benchmark using `gradlew jmh`.
+You can run the benchmark using `./gradlew jmh` (Linux/Mac) or `./gradlew.bat jmh` (Windows). Gradle will also 
+automatically download the necessary dependencies.
 
 # Results
 
@@ -31,5 +34,3 @@ EnumSetBenchmark.benchmarkHashSetEquals          thrpt    2    55482402.525     
 EnumSetBenchmark.benchmarkSetOfCreate            thrpt    2    26231241.949          ops/s
 EnumSetBenchmark.benchmarkSetOfEquals            thrpt    2    39374454.123          ops/s
 ```
-
-)
