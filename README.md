@@ -20,21 +20,20 @@ automatically download the necessary dependencies.
 These are the results on my machine (Windows 11, AMD Ryzen 7 2700X with 8 cores, 16GB RAM, SSD):
 
 ```
-Benchmark                                         Mode  Cnt           Score          Error  Units
-EnumSetBenchmark.benchmarkBitmaskAdd             thrpt    5  1115140405.688 ± 35250256.893  ops/s
-EnumSetBenchmark.benchmarkBitmaskCreation        thrpt    5  1285201874.153 ±  9067144.888  ops/s
-EnumSetBenchmark.benchmarkBitmaskCreationInline  thrpt    5  2615157193.879 ± 37822678.250  ops/s
-EnumSetBenchmark.benchmarkBitmaskEquals          thrpt    5  1552854571.531 ± 67324741.854  ops/s
-EnumSetBenchmark.benchmarkBitmaskEqualsInline    thrpt    5  2592155157.618 ± 81168350.007  ops/s
-EnumSetBenchmark.benchmarkBitmaskRemove          thrpt    5  1299631242.484 ± 37262398.635  ops/s
-EnumSetBenchmark.benchmarkEnumSetAdd             thrpt    5   192580988.636 ± 14345228.680  ops/s
-EnumSetBenchmark.benchmarkEnumSetCreate          thrpt    5   195539058.507 ± 18609297.465  ops/s
-EnumSetBenchmark.benchmarkEnumSetCreateInline    thrpt    5   214634406.147 ± 14063755.759  ops/s
-EnumSetBenchmark.benchmarkEnumSetEquals          thrpt    5   578690429.129 ± 13834330.806  ops/s
-EnumSetBenchmark.benchmarkEnumSetEqualsInline    thrpt    5   487304000.628 ± 11186639.817  ops/s
-EnumSetBenchmark.benchmarkEnumSetRemove          thrpt    5   199864415.903 ± 10351114.126  ops/s
-EnumSetBenchmark.benchmarkHashSetCreate          thrpt    5    18082928.924 ±  5850528.529  ops/s
-EnumSetBenchmark.benchmarkHashSetEquals          thrpt    5    50955118.352 ±   311342.533  ops/s
-EnumSetBenchmark.benchmarkSetOfCreate            thrpt    5    25196759.860 ±  1703847.053  ops/s
-EnumSetBenchmark.benchmarkSetOfEquals            thrpt    5    98488312.932 ±  3050828.656  ops/s
+EnumSetBenchmark.bitmaskAdd             thrpt    5  1122953845.662 ± 14487321.908  ops/s
+EnumSetBenchmark.bitmaskCreation        thrpt    5  1292682130.158 ± 33722811.879  ops/s
+EnumSetBenchmark.bitmaskCreationInline  thrpt    5  2640638042.506 ± 37382005.672  ops/s
+EnumSetBenchmark.bitmaskEquals          thrpt    5  1582210639.358 ± 33561406.255  ops/s
+EnumSetBenchmark.bitmaskEqualsInline    thrpt    5  2634237498.969 ± 37811030.834  ops/s
+EnumSetBenchmark.bitmaskRemove          thrpt    5  1279302750.101 ± 22906668.356  ops/s
+EnumSetBenchmark.enumSetAdd             thrpt    5   201261050.245 ±  3047021.038  ops/s
+EnumSetBenchmark.enumSetCreate          thrpt    5   215090629.176 ±   827035.414  ops/s
+EnumSetBenchmark.enumSetCreateInline    thrpt    5   239108143.810 ±  2845003.880  ops/s
+EnumSetBenchmark.enumSetEquals          thrpt    5   586193130.841 ±  5057355.446  ops/s
+EnumSetBenchmark.enumSetEqualsInline    thrpt    5   500615966.717 ±  3552721.301  ops/s
+EnumSetBenchmark.enumSetRemove          thrpt    5   204125597.157 ±  1477564.086  ops/s
+EnumSetBenchmark.hashSetCreate          thrpt    5    21140166.919 ±   331772.905  ops/s
+EnumSetBenchmark.hashSetEquals          thrpt    5    53184863.238 ±   289455.786  ops/s
+EnumSetBenchmark.setOfCreate            thrpt    5    26619186.610 ±   370502.131  ops/s
+EnumSetBenchmark.setOfEquals            thrpt    5    54846987.946 ±  1022244.569  ops/s
 ```

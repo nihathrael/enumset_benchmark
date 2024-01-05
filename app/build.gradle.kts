@@ -22,7 +22,7 @@ java {
 }
 
 jmh {
-    warmupIterations = 2
+    warmupIterations = 5
     iterations = 5
     fork = 1
 }

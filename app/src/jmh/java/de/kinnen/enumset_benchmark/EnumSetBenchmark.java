@@ -45,12 +45,12 @@ public class EnumSetBenchmark {
 
 
     @Benchmark
-    public void benchmarkSetOfEquals(SetOfState state, Blackhole bh) {
+    public void setOfEquals(SetOfState state, Blackhole bh) {
         bh.consume(state.setOfA.equals(state.setOfB));
     }
 
     @Benchmark
-    public void benchmarkSetOfCreate(FlagState state, Blackhole bh) {
+    public void setOfCreate(FlagState state, Blackhole bh) {
         Set<Flag> setOfA = Set.of(state.a, state.b, state.g);
         bh.consume(setOfA);
     }
@@ -63,12 +63,12 @@ public class EnumSetBenchmark {
 
 
     @Benchmark
-    public void benchmarkHashSetEquals(HastSetState state, Blackhole bh) {
+    public void hashSetEquals(HastSetState state, Blackhole bh) {
         bh.consume(state.hashSetA.equals(state.hastSetB));
     }
 
     @Benchmark
-    public void benchmarkHashSetCreate(FlagState state, Blackhole bh) {
+    public void hashSetCreate(FlagState state, Blackhole bh) {
         Set<Flag> hashSetA = new HashSet<>(Arrays.asList(state.a, state.b, state.g));
         bh.consume(hashSetA);
     }
@@ -83,7 +83,7 @@ public class EnumSetBenchmark {
     }
 
     @Benchmark
-    public void benchmarkEnumSetEquals(EnumSetState state, Blackhole bh) {
+    public void enumSetEquals(EnumSetState state, Blackhole bh) {
         bh.consume(state.enumSetA.equals(state.enumSetB));
     }
 
@@ -92,14 +92,14 @@ public class EnumSetBenchmark {
      * even though we consume the result of the equals call.
      */
     @Benchmark
-    public void benchmarkEnumSetEqualsInline(Blackhole bh) {
+    public void enumSetEqualsInline(Blackhole bh) {
         Set<Flag> enumSetA = EnumSet.of(Flag.A, Flag.B, Flag.E);
         Set<Flag> enumSetB = EnumSet.of(Flag.C, Flag.D, Flag.F);
         bh.consume(enumSetA.equals(enumSetB));
     }
 
     @Benchmark
-    public void benchmarkEnumSetCreate(FlagState state, Blackhole bh) {
+    public void enumSetCreate(FlagState state, Blackhole bh) {
         Set<Flag> enumSet = EnumSet.of(state.a, state.b, state.g);
         bh.consume(enumSet);
     }
@@ -109,13 +109,13 @@ public class EnumSetBenchmark {
      * even though we still consume it.
      */
     @Benchmark
-    public void benchmarkEnumSetCreateInline(Blackhole bh) {
+    public void enumSetCreateInline(Blackhole bh) {
         Set<Flag> enumSet = EnumSet.of(Flag.A, Flag.B, Flag.E);
         bh.consume(enumSet);
     }
 
     @Benchmark
-    public void benchmarkEnumSetAdd(FlagState state, Blackhole bh) {
+    public void enumSetAdd(FlagState state, Blackhole bh) {
         Set<Flag> enumSet = EnumSet.of(state.a, state.b, state.g);
         bh.consume(enumSet);
         enumSet.add(state.c);
@@ -123,7 +123,7 @@ public class EnumSetBenchmark {
     }
 
     @Benchmark
-    public void benchmarkEnumSetRemove(FlagState state, Blackhole bh) {
+    public void enumSetRemove(FlagState state, Blackhole bh) {
         Set<Flag> enumSet = EnumSet.of(state.a, state.b, state.g);
         bh.consume(enumSet);
         enumSet.remove(state.b);
@@ -155,7 +155,7 @@ public class EnumSetBenchmark {
     }
 
     @Benchmark
-    public void benchmarkBitmaskCreation(BitMaskState state, Blackhole bh) {
+    public void bitmaskCreation(BitMaskState state, Blackhole bh) {
         int a = state.valueOne | state.valueTwo | state.valueThree;
         bh.consume(a);
     }
@@ -165,14 +165,14 @@ public class EnumSetBenchmark {
      * This should be much faster than the non-inlined version.
      */
     @Benchmark
-    public void benchmarkBitmaskCreationInline(Blackhole bh) {
+    public void bitmaskCreationInline(Blackhole bh) {
         int a = A | B | E;
         bh.consume(a);
     }
 
 
     @Benchmark
-    public void benchmarkBitmaskEquals(BitMaskState state, Blackhole bh) {
+    public void bitmaskEquals(BitMaskState state, Blackhole bh) {
         bh.consume(state.a == state.b);
     }
 
@@ -182,7 +182,7 @@ public class EnumSetBenchmark {
      * This should be much faster than the non-inlined version.
      */
     @Benchmark
-    public void benchmarkBitmaskEqualsInline(Blackhole bh) {
+    public void bitmaskEqualsInline(Blackhole bh) {
         int a = A | B | E;
         int b = C | D | F;
         //noinspection ConstantValue - The point of this demonstration is to show that the JVM will be able to calculate the constant
@@ -190,7 +190,7 @@ public class EnumSetBenchmark {
     }
 
     @Benchmark
-    public void benchmarkBitmaskAdd(BitMaskState state, Blackhole bh) {
+    public void bitmaskAdd(BitMaskState state, Blackhole bh) {
         int a = state.valueOne | state.valueTwo | state.valueThree;
         bh.consume(a);
         a |= state.valueFour;
@@ -198,7 +198,7 @@ public class EnumSetBenchmark {
     }
 
     @Benchmark
-    public void benchmarkBitmaskRemove(BitMaskState state, Blackhole bh) {
+    public void bitmaskRemove(BitMaskState state, Blackhole bh) {
         int a = state.valueOne | state.valueTwo | state.valueThree;
         bh.consume(a);
         a &= ~state.valueTwo;
